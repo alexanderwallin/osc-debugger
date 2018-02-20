@@ -1,6 +1,6 @@
 {
   "name": "osc-debugger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple but charming OSC debugging tool for the terminal",
   "engines": {
     "node": "8.x"
