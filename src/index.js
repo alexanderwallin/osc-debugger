@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { prompt } from 'inquirer'
 
 import monitor from './monitor.js'
