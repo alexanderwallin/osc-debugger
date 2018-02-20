@@ -5,7 +5,12 @@
   "engines": {
     "node": "8.x"
   },
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "bind": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "babel --out-dir dist src"
   },
