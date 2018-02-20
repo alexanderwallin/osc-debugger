@@ -8,6 +8,7 @@
     "prettier"
   ],
   "rules": {
+    "no-unused-vars": ["error", { "varsIgnorePattern": "colors" }],
     "radix": 0,
     "import/extensions": 0,
   }
