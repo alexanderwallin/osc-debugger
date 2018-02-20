@@ -1,7 +1,7 @@
 {
   "name": "osc-debugger",
   "version": "1.0.0",
-  "description": "An OSC debugging tool",
+  "description": "A simple but charming OSC debugging tool for the terminal",
   "engines": {
     "node": "8.x"
   },
@@ -40,7 +40,10 @@
   },
   "keywords": [
     "osc",
-    "debug"
+    "debug",
+    "terminal",
+    "console",
+    "monitor"
   ],
   "author": "Alexander Wallin <office@alexanderwallin.com> (http://alexanderwallin.com)",
   "license": "The Unlicense",
