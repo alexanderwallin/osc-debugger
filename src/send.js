@@ -9,13 +9,13 @@ import createSocket from './createSocket.js'
 inquirer.registerPrompt('command', require('inquirer-command-prompt'))
 
 function parseInputValue(value) {
-  if (/^".+"$/.test(value) === true) {
-    return value
+  if (/^"[^"]+"$/.test(value) === true) {
+    return value.toString().substr(1, value.length - 2)
   } else if (/\./.test(value)) {
     return parseFloat(value)
-  } else {
-    return parseInt(value)
   }
+
+  return parseInt(value)
 }
 
 async function sendMessage(socket, message, port) {
