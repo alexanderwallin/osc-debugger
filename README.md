@@ -1,5 +1,7 @@
 # osc-debugger
 
+![Example of using osc-debugger](example.gif)
+
 `osc-debugger` is a – 🥁 – OSC debugger for the terminal. No results came up when I search for "osc debugger" on npm's website, so I figured there wasn't one.
 
 It has two dazzlingly simple features:
