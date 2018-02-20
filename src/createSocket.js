@@ -1,7 +1,7 @@
 import colors from 'colors'
 import { createSocket } from 'dgram'
 
-export default async function(port) {
+export default async function(port = null) {
   return new Promise((resolve, reject) => {
     const udp = createSocket('udp4')
 
@@ -13,16 +13,20 @@ export default async function(port) {
       reject(err)
     })
 
-    udp.on('listening', () => {
-      const address = udp.address()
-      console.log(
-        `\n⚡️  OSC Debugger server connected to ${address.address}:${
-          address.port
-        }`.yellow.bold
-      )
-      resolve(udp)
-    })
+    if (port !== null) {
+      udp.on('listening', () => {
+        const address = udp.address()
+        console.log(
+          `\n⚡️  OSC Debugger server listening to ${address.address}:${
+            address.port
+          }`.yellow.bold
+        )
+        resolve(udp)
+      })
 
-    udp.bind(port)
+      udp.bind(port)
+    } else {
+      resolve(udp)
+    }
   })
 }
