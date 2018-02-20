@@ -8,6 +8,7 @@
     "prettier"
   ],
   "rules": {
+    "radix": 0,
     "import/extensions": 0,
   }
 }

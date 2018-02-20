@@ -10,7 +10,10 @@
     "build": "babel --out-dir dist src"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "colors": "^1.1.2",
+    "inquirer": "^5.1.0",
+    "osc-min": "^1.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.40",
@@ -29,7 +32,10 @@
     "type": "git",
     "url": "git+https://github.com/alexanderwallin/osc-debugger.git"
   },
-  "keywords": ["osc", "debug"],
+  "keywords": [
+    "osc",
+    "debug"
+  ],
   "author": "Alexander Wallin <office@alexanderwallin.com> (http://alexanderwallin.com)",
   "license": "The Unlicense",
   "bugs": {
