@@ -6,7 +6,7 @@
     "node": "8.x"
   },
   "main": "dist/index.js",
-  "bind": "dist/index.js",
+  "bin": "dist/index.js",
   "files": [
     "dist",
     "src"
