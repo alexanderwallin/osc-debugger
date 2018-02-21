@@ -3,7 +3,7 @@ import colors from 'colors'
 
 import createSocket from './createSocket.js'
 
-export default async function monitor(port) {
+export default async function monitor({ port }) {
   try {
     const socket = await createSocket(port)
 

@@ -1,6 +1,9 @@
 #!/usr/bin/env node
+/* eslint no-unused-expressions: 0 */
 import { prompt } from 'inquirer'
+import yargs from 'yargs'
 
+import packageInfo from '../package.json'
 import monitor from './monitor.js'
 import send from './send.js'
 
@@ -9,7 +12,7 @@ const Task = {
   SEND: 'SEND',
 }
 
-async function run() {
+async function runInteractive() {
   const { task, port } = await prompt([
     {
       type: 'list',
@@ -30,16 +33,63 @@ async function run() {
   ])
 
   if (task === Task.MONITOR) {
-    await monitor(port)
+    await monitor({ port })
   } else if (task === Task.SEND) {
-    await send(port)
+    await send({ port })
   } else {
     throw new TypeError(`Unknown task: ${task}`)
   }
 }
 
-run().catch(err => {
-  console.log('An error occured:')
-  console.log(err)
-  console.log(err.stack)
-})
+// Setup CLI
+yargs
+  .command(
+    'monitor [options]',
+    'Monitor OSC messages',
+    {
+      port: {
+        alias: 'p',
+        default: '8888',
+        demandOption: true,
+        describe: 'The port you want to listen to',
+      },
+    },
+    async ({ port }) => {
+      await monitor({ port })
+    }
+  )
+  .command(
+    'send [options]',
+    'Send OSC messages',
+    {
+      address: {
+        alias: 'a',
+        default: '0.0.0.0',
+        describe: 'The IP address you want to send to',
+      },
+      port: {
+        alias: 'p',
+        default: '8888',
+        demandOption: true,
+        describe: 'The port you want to send to',
+      },
+    },
+    ({ port, address }) => {
+      send({ port, address })
+    }
+  )
+  .command(
+    '*',
+    `Launch in interactive mode`,
+    () => {},
+    () => {
+      runInteractive().catch(err => {
+        console.log('An error occured:')
+        console.log(err)
+        console.log(err.stack)
+      })
+    }
+  )
+  .version(packageInfo.version)
+  .help()
+  .alias('h', 'help').argv

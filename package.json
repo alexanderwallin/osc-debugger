@@ -19,7 +19,8 @@
     "colors": "^1.1.2",
     "inquirer": "^5.1.0",
     "inquirer-command-prompt": "0.0.7",
-    "osc-min": "^1.1.1"
+    "osc-min": "^1.1.1",
+    "yargs": "^11.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.40",
