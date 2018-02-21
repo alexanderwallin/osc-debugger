@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 /* eslint no-unused-expressions: 0 */
 import { prompt } from 'inquirer'
+import yargonaut from 'yargonaut'
 import yargs from 'yargs'
 
 import packageInfo from '../package.json'
 import monitor from './monitor.js'
 import send from './send.js'
+
+yargonaut.style('blue')
 
 const Task = {
   MONITOR: 'MONITOR',
