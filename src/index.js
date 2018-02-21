@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* eslint no-unused-expressions: 0 */
+/* eslint prefer-template: 0 */
+import colors from 'colors'
 import { prompt } from 'inquirer'
 import yargonaut from 'yargonaut'
 import yargs from 'yargs'
@@ -46,8 +47,12 @@ async function runInteractive() {
 
 // Setup CLI
 yargs
+  .usage(
+    `OSC Debugger\n\n`.yellow.bold +
+      `A simple but charming OSC debugging tool for the terminal. Runs in interactive mode if no command is specified.`
+  )
   .command(
-    'monitor [options]',
+    'monitor [options...]',
     'Monitor OSC messages',
     {
       port: {
@@ -62,7 +67,7 @@ yargs
     }
   )
   .command(
-    'send [options]',
+    'send [options...]',
     'Send OSC messages',
     {
       address: {
@@ -82,8 +87,8 @@ yargs
     }
   )
   .command(
-    '*',
-    `Launch in interactive mode`,
+    '$0',
+    false,
     () => {},
     () => {
       runInteractive().catch(err => {
@@ -95,4 +100,5 @@ yargs
   )
   .version(packageInfo.version)
   .help()
-  .alias('h', 'help').argv
+  .alias('h', 'help')
+  .parse()
