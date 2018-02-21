@@ -21,6 +21,10 @@ with that shiny `-g` flag.
 
 ## Usage
 
+🎶 _Try with a little `osc-debugger --help` from my friends._ 🎶
+
+### Interactive mode
+
 If you were brave enough to install `osc-debugger` onto your system, then you are free to
 
 ```sh
@@ -28,3 +32,15 @@ osc-debugger
 ```
 
 in your terminal. From there you will be escorted to your destination.
+
+### CLI commands
+
+If you know where you are going and don't need that escort, you can
+
+```sh
+# Start a monitor
+osc-debugger monitor -p 6666
+
+# Start a sending session
+osc-debugger send -p 6666 -a 192.168.0.666
+```
