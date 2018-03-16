@@ -17,7 +17,7 @@ const Task = {
 }
 
 async function runInteractive() {
-  const { task, port } = await prompt([
+  const { task, port, address } = await prompt([
     {
       type: 'list',
       name: 'task',
@@ -34,12 +34,18 @@ async function runInteractive() {
       default: 666,
       filter: value => parseInt(value),
     },
+    {
+      type: 'input',
+      name: 'address',
+      message: 'What host IP do you want to connect to?',
+      default: '0.0.0.0',
+    },
   ])
 
   if (task === Task.MONITOR) {
-    await monitor({ port })
+    await monitor({ port, address })
   } else if (task === Task.SEND) {
-    await send({ port })
+    await send({ port, address })
   } else {
     throw new TypeError(`Unknown task: ${task}`)
   }

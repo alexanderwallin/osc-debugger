@@ -3,9 +3,9 @@ import colors from 'colors'
 
 import createSocket from './createSocket.js'
 
-export default async function monitor({ port }) {
+export default async function monitor({ port, address }) {
   try {
-    const socket = await createSocket(port)
+    const socket = await createSocket(port, address)
 
     socket.on('message', buffer => {
       const message = osc.fromBuffer(buffer)

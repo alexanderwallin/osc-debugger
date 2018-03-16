@@ -1,7 +1,7 @@
 import colors from 'colors'
 import { createSocket } from 'dgram'
 
-export default async function(port = null) {
+export default async function(port = null, address = null) {
   return new Promise((resolve, reject) => {
     const udp = createSocket('udp4')
 
@@ -24,7 +24,7 @@ export default async function(port = null) {
         resolve(udp)
       })
 
-      udp.bind(port)
+      udp.bind(port, address)
     } else {
       resolve(udp)
     }
