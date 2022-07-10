@@ -72,7 +72,7 @@ export default async function send({ port, address = null }) {
       const value = parseInputValue(rawValue)
       const message = osc.toBuffer({
         address: oscAddress,
-        args: [value],
+        args: Number.isNaN(value) ? [] : [value],
       })
       await sendMessage(socket, message, port, receiverIp)
     }
